@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Palavra para Você ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Fundo vibrante com gradiente moderno e chamativo */
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Cartão centralizado onde a mensagem aparece */
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Ícone ou detalhe no topo do cartão */
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Texto principal da mensagem - Super visível */
+        .mensagem {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Referência do versículo ou autoria */
+        .autor {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffe600; /* Amarelo vibrante para dar destaque */
+            margin-bottom: 30px;
+        }
+
+        /* Botão interativo caso a pessoa queira tirar outra palavra */
+        .btn-refresh {
+            background-color: #ffffff;
+            color: #2575fc;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-refresh:active {
+            transform: scale(0.95);
+        }
+
+        /* Animações para deixar o visual dinâmico */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon" id="emoji">✨</div>
+        <div class="mensagem" id="texto-mensagem">Carregando sua palavra...</div>
+        <div class="autor" id="autor-mensagem"></div>
+        <button class="btn-refresh" onclick="sortearMensagem()">Receber outra palavra 📖</button>
+    </div>
+
+    <script>
+        // Lista de mensagens vibrantes e impactantes para a rua
+        const mensagens = [
+            {
+                texto: "Não temas, porque eu sou contigo; não te assombres, porque eu sou o teu Deus; eu te fortaleço.",
+                autor: "Isaías 41:10",
+                emoji: "🛡️"
+            },
+            {
+                texto: "O Senhor é o meu pastor; nada me faltará. Ele te deita em verdes pastos e guia as tuas águas.",
+                autor: "Salmo 23:1",
+                emoji: "🌿"
+            },
+            {
+                texto: "Porque sou eu que conheço os planos que tenho para vocês, planos de prosperidade e não de mal.",
+                autor: "Jeremias 29:11",
+                emoji: "🎯"
+            },
+            {
+                texto: "Venham a mim todos vocês que estão cansados e sobrecarregados, e eu vos aliviarei.",
+                autor: "Mateus 11:28",
+                emoji: "❤️"
+            },
+            {
+                texto: "Eu sou o caminho, a verdade e a vida. Ninguém vem ao Pai senão por mim.",
+                autor: "João 14:6",
+                emoji: "🔀"
+            },
+            {
+                texto: "O amor de Deus por você é inexplicável e infinito. Você não está sozinho nessa caminhada!",
+                autor: "Deus te ama",
+                emoji: "✨"
+            },
+            {
+                texto: "Entrega o teu caminho ao Senhor; confia nele, e o mais ele fará.",
+                autor: "Salmo 37:5",
+                emoji: "🙌"
+            }
+        ];
+
+        function sortearMensagem() {
+            // Sorteia um índice aleatório da lista
+            const indiceAleatorio = Math.floor(Math.random() * mensagens.length);
+            const selecao = mensagens[indiceAleatorio];
+            
+            // Atualiza a tela com efeito visual simples
+            const card = document.querySelector('.card');
+            card.style.animation = 'none';
+            setTimeout(() => {
+                card.style.animation = 'fadeIn 0.5s ease-out';
+                document.getElementById('texto-mensagem').innerText = `"${selecao.texto}"`;
+                document.getElementById('autor-mensagem').innerText = selecao.autor;
+                document.getElementById('emoji').innerText = selecao.emoji;
+            }, 50);
+        }
+
+        // Executa o primeiro sorteio assim que a página abre
+        sortearMensagem();
+    </script>
+
+</body>
+</html>
