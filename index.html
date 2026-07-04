@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -23,28 +22,29 @@
             color: #ffffff;
             padding: 20px;
             text-align: center;
-            overflow: hidden;
+            overflow-y: auto; /* Permite rolar caso a tela do celular seja pequena */
         }
 
         /* Cartão centralizado onde a mensagem aparece */
         .card {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.15); /* Corrigido de 260 para 255 */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.25);
+            border: 3px solid rgba(255, 255, 255, 0.25);
             border-radius: 24px;
             padding: 40px 30px;
             width: 100%;
             max-width: 450px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             animation: fadeIn 0.8s ease-out;
+            margin: 20px 0;
         }
 
         /* Ícone ou detalhe no topo do cartão */
         .icon {
             font-size: 3rem;
             margin-bottom: 20px;
-            animation: pulse 2s infinite;
+            animation: pulse 1s infinite;
         }
 
         /* Texto principal da mensagem - Super visível */
@@ -64,6 +64,7 @@
             letter-spacing: 1px;
             color: #ffe600; /* Amarelo vibrante para dar destaque */
             margin-bottom: 30px;
+            animation: pulse 0.5s infinite;
         }
 
         /* Botão interativo caso a pessoa queira tirar outra palavra */
@@ -78,10 +79,42 @@
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s, cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 35px;
         }
 
         .btn-refresh:active {
             transform: scale(0.95);
+        }
+
+        /* Seção de informações da Igreja */
+        .info-igreja {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .nome-igreja {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffe600; /* Amarelo chamativo */
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .endereco-igreja {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        .cultos-igreja {
+            font-size: 0.95rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 10px;
         }
 
         /* Animações para deixar o visual dinâmico */
@@ -92,7 +125,7 @@
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
     </style>
@@ -104,10 +137,21 @@
         <div class="mensagem" id="texto-mensagem">Carregando sua palavra...</div>
         <div class="autor" id="autor-mensagem"></div>
         <button class="btn-refresh" onclick="sortearMensagem()">Receber outra palavra 📖</button>
+
+        <!-- Seção da Igreja adicionada com as correções gramaticais -->
+        <div class="info-igreja">
+            <div class="nome-igreja">Assembleia de Deus<br>Prodígios, Milagres e Maravilhas</div>
+            <div class="endereco-igreja">
+                📍 Rua Oscar Henriques Ladeira, nº 214<br>Bairro Xangrilá
+            </div>
+            <div class="cultos-igreja">
+                🗓️ Cultos: Sextas às 19:30h e Domingos às 18:30h
+            </div>
+        </div>
     </div>
 
     <script>
-        // Lista de mensagens vibrantes e impactantes para a rua
+        // Lista de mensagens vibrantes e impactantes para a rua (Objeto vazio corrigido)
         const mensagens = [
             {
                 texto: "Não temas, porque eu sou contigo; não te assombres, porque eu sou o teu Deus; eu te fortaleço.",
@@ -143,6 +187,101 @@
                 texto: "Entrega o teu caminho ao Senhor; confia nele, e o mais ele fará.",
                 autor: "Salmo 37:5",
                 emoji: "🙌"
+            },
+            {
+                texto: "Não fui eu que lhe ordenei? Seja forte e corajoso! Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.",
+                autor: "Josué 1:9",
+                emoji: "🦁"
+            },
+            {
+                texto: "Mas os que esperam no Senhor renovarão as suas forças; subirão com asas como águias; correrão e não se cansarão; caminharão e não se fatigarão.",
+                autor: "Isaías 40:31",
+                emoji: "🦅"
+            },
+            {
+                texto: "Posso todas as coisas naquele que me fortalece.",
+                autor: "Filipenses 4:13",
+                emoji: "💪"
+            },
+            {
+                texto: "Sabemos que Deus age em todas as coisas para o bem daqueles que o amam, dos que foram chamados de acordo com o seu propósito.",
+                autor: "Romanos 8:28",
+                emoji: "🧩"
+            },
+            {
+                texto: "Mil poderão cair ao seu lado, e dez mil à sua direita, mas nada o atingirá.",
+                autor: "Salmo 91:7",
+                emoji: "🛡️"
+            },
+            {
+                texto: "O próprio Senhor irá à sua frente e estará com você; ele nunca o deixará, nunca o abandonará. Não tenha medo! Não se desanime!",
+                autor: "Deuteronômio 31:8",
+                emoji: "👣"
+            },
+            {
+                texto: "Não andem ansiosos por coisa alguma, mas em tudo apresentem seus pedidos a Deus para que a paz guarde os seus corações.",
+                autor: "Filipenses 4:6-7",
+                emoji: "🎈"
+            },
+            {
+                texto: "Deixo-vos a paz, a minha paz vos dou; não vo-la dou como o mundo a dá. Não se turbe o vosso coração, nem se atemorize.",
+                autor: "João 14:27",
+                emoji: "🕊️"
+            },
+            {
+                texto: "Lancem sobre ele toda a sua ansiedade, porque ele tem cuidado de vocês.",
+                autor: "1 Pedro 5:7",
+                emoji: "🤲"
+            },
+            {
+                texto: "O choro pode durar uma noite, mas a alegria vem pela manhã.",
+                autor: "Salmo 30:5",
+                emoji: "☀️"
+            },
+            {
+                texto: "Ainda que eu andasse pelo vale da sombra da morte, não temeria mal algum, porque tu estás comigo; a tua vara e o teu cajado me consolam.",
+                autor: "Salmo 23:4",
+                emoji: "⛰️"
+            },
+            {
+                texto: "Confie no Senhor de todo o seu coração e não se apóie em seu próprio entendimento; reconheça o Senhor em todos os seus caminhos, e ele endireitará as suas veredas.",
+                autor: "Provérbios 3:5-6",
+                emoji: "🧭"
+            },
+            {
+                texto: "Espera pelo Senhor, tem bom ânimo, e fortifique-se o teu coração; espera, pois, pelo Senhor.",
+                autor: "Salmo 27:14",
+                emoji: "⏳"
+            },
+            {
+                texto: "Se Deus é por nós, quem será contra nós?",
+                autor: "Romanos 8:31",
+                emoji: "🔥"
+            },
+            {
+                texto: "O Senhor é a minha luz e a minha salvação; de quem terei medo? O Senhor é a fortaleza da minha vida; de quem me recearei?",
+                autor: "Salmo 27:1",
+                emoji: "💡"
+            },
+            {
+                texto: "O Senhor te abençoe e te guarde; o Senhor faça resplandecer o seu rosto sobre ti e te dê a paz.",
+                autor: "Números 6:24-26",
+                emoji: "✨"
+            },
+            {
+                texto: "Porque para Deus nada é impossível.",
+                autor: "Lucas 1:37",
+                emoji: "⚡"
+            },
+            {
+                texto: "A vossa videira dará o seu fruto, a terra dará a sua novidade, e os céus darão o seu orvalho. Não temais, trabalhem as vossas mãos.",
+                autor: "Zacarias 8:12-13",
+                emoji: "🍇"
+            },
+            {
+                texto: "Combati o bom combate, acabei a carreira, guardei a fé. Desde agora, a coroa da justiça me está guardada.",
+                autor: "2 Timóteo 4:7-8",
+                emoji: "👑"
             }
         ];
 
